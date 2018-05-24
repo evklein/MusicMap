@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="page-header">
+    <!-- <p>Never miss another event!</p> -->
+    <div class="row">
+      <div class="navbar-default">
+        <ul class="nav navbar-nav">
+          <li><h2 class="title">Music Map <i class="far fa-map"></i></h2></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/">Find Events</a></li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/saved-events">Your Saved Events</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">

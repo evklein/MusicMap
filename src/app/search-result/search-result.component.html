@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row">
+        <div class="span4">
+            <img src="{{ searchResult.imageURL }}">
+            <h3><a href="{{ searchResult.url }}">{{ searchResult.artist }}</a><h4><i class="far fa-calendar-alt"></i> {{ searchResult.getDatetime() | date }}</h4></h3>
+            <p><i class="fas fa-map-marker-alt"></i><span>&nbsp;&nbsp;</span><b>{{ searchResult.venueName }}</b> in {{ searchResult.venueGlobalLocation }}.</p>
+            <div class="btn-group">
+                <button type="button" class="btn btn-info" (click)="redirectToTickets()"><i class="fas fa-ticket-alt"></i> Buy Tickets</button>
+                <button type="button" class="btn btn-success" (click)="addToEvents()" [disabled]="alreadyAddedByUser"><i class="fas fa-plus"></i> Add to Your Events</button>
+            </div>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">

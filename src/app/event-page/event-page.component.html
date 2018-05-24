@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="row">
+    <div class="span4">
+        <img src="{{ savedEvent.imageURL }}">
+        <h3><a href="{{ savedEvent.url }}">{{ savedEvent.artist }}</a><h4><i class="far fa-calendar-alt"></i> {{ savedEvent.getDatetime() | date }}</h4></h3>
+        <p><i class="fas fa-map-marker-alt"></i><span>&nbsp;&nbsp;</span><b>{{ savedEvent.venueName }}</b> in {{ savedEvent.venueGlobalLocation }}.</p>
+    </div>
+  </div>
+</div>

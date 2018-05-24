@@ -1,0 +1,5 @@
+<div class="container">
+  <h4 class="status" *ngIf="searchResultCount > 0"><b>{{ searchResultCount }}</b> upcoming events found.</h4>
+  <h4 class="status" *ngIf="searchResultCount === 0">No search results found.</h4>
+  <app-search-result *ngFor="let result of searchResults" [searchResult]="result"></app-search-result>
+</div>
