@@ -8,11 +8,10 @@
             <span class="glyphicon glyphicon-search" *ngIf="!isSearching"></span>
             <i class="fas fa-sync-alt fa-spin" *ngIf="isSearching"></i>
           </button>
-          <button class="btn btn-danger" [disabled]="!hasResults">Clear Results</button>
+          <button class="btn btn-danger" [disabled]="!hasResults" (click)="clearResults()">Clear Results</button>
         </div>
       </div>
     </div>
-    <p class="errorNotification" #errorNotification></p>
   </div>
 </div>
 <app-search-results></app-search-results>

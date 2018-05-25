@@ -10,6 +10,7 @@ import { SearchService } from '../search.service';
 export class SearchComponent implements OnInit {
   @Input() searchKey: string;
   isSearching: boolean = false;
+  hasResults: boolean = false;
 
   constructor(private searchService: SearchService) { }
 
@@ -44,7 +45,9 @@ export class SearchComponent implements OnInit {
     }).then(function(rawJSON) {
       // TODO: Create new object.
       this.searchService.clearSearchResults();
-
+      if (rawJSON.length > 0) {
+        this.hasResults = true;
+      }
       for (let i = 0; i < rawJSON.length; i++) {
         let newSearchResult: SearchResult = new SearchResult(rawJSON[i].id, artistName, imageURL, rawJSON[i].datetime, rawJSON[i].url,
               rawJSON[i].venue.name, this.getLocation(rawJSON[i]), rawJSON[i].offers.url);
@@ -62,5 +65,11 @@ export class SearchComponent implements OnInit {
       location = jsonObject.venue.city + ', ' + jsonObject.venue.country;
     }
     return location;
+  }
+
+  clearResults() {
+    this.searchService.clearSearchResults();
+    this.hasResults = false;
+    this.searchKey = '';
   }
 }
