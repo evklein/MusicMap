@@ -15,12 +15,16 @@ export class SavedEventsComponent implements OnInit, OnDestroy {
   constructor(private savedEventService: SavedEventService) { }
 
   ngOnInit() {
+    console.log("wow");
+    this.savedEventService.refreshSavedEvents();
     this.subscription = this.savedEventService.modifiedEvents.subscribe(
-      (events: SearchResult[]) => {
-        this.savedEvents = events;
+      (events: any[]) => {
+        this.savedEvents = [];
+        for (let event of events) {
+          this.savedEvents.push(new SearchResult(event.id, event.artist, event.imageURL, event.datetime, event.url, event.venueName, event.venueGlobalLocation, event.ticketUrl));
+        }
       }
     );
-    this.savedEvents = this.savedEventService.savedEvents;
   }
 
   ngOnDestroy() {

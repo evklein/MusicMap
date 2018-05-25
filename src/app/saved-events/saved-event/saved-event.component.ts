@@ -12,9 +12,7 @@ export class SavedEventComponent implements OnInit {
 
   constructor(private savedEventService: SavedEventService) { }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   onRemove() {
     this.savedEventService.removeFromSavedEvents(this.searchResult.getID());

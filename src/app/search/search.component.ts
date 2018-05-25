@@ -19,7 +19,7 @@ export class SearchComponent implements OnInit {
 
   search() {
     this.isSearching = true;
-    const API_KEY: string = '?app_id=50'
+    const API_KEY: string = '?app_id=70'
     this.getArtist(API_KEY);
   }
 
@@ -30,7 +30,7 @@ export class SearchComponent implements OnInit {
       return response.json();
     }).then(function(rawJSON) {
       if (rawJSON.name === '') { // No results for artist, send message to user.
-        this.errorElementReference.nativeElement.value = 'FUUUUUK';
+
       } else {
         this.getArtistEvents(rawJSON.name, rawJSON.image_url, API_KEY);
       }
@@ -39,15 +39,11 @@ export class SearchComponent implements OnInit {
 
   getArtistEvents(artistName: string, imageURL: string, API_KEY: string) {
     let eventSearchUrl: string = 'https://rest.bandsintown.com/artists/' + artistName + '/events' + API_KEY;
-
     fetch(eventSearchUrl).then(function(response) {
       return response.json();
     }).then(function(rawJSON) {
       // TODO: Create new object.
       this.searchService.clearSearchResults();
-      if (rawJSON.length === 0) { // No events found.
-        
-      }
 
       for (let i = 0; i < rawJSON.length; i++) {
         let newSearchResult: SearchResult = new SearchResult(rawJSON[i].id, artistName, imageURL, rawJSON[i].datetime, rawJSON[i].url,

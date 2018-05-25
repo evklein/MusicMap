@@ -3,8 +3,8 @@
         <div class="span4">
             <img src="{{ searchResult.imageURL }}">
             <h3><a [routerLink]="['/event-page', searchResult.id]">{{ searchResult.artist }}</a>
-            <h4><i class="far fa-calendar-alt"></i> {{ searchResult.datetime | date }}</h4></h3>
-            <h4><i class="far fa-clock"></i> {{ searchResult.datetime.toLocaleTimeString() }}</h4>
+            <h4><i class="far fa-calendar-alt"></i> {{ searchResult.getDatetime() | date }}</h4></h3>
+            <h4><i class="far fa-clock"></i> {{ searchResult.getDatetime().toLocaleTimeString() }}</h4>
             <h4><i class="fas fa-map-marker-alt"></i><span>&nbsp;&nbsp;</span><b>{{ searchResult.venueName }}</b> in {{ searchResult.venueGlobalLocation }}</h4>
             <div class="btn-group">
                 <button type="button" class="btn btn-info" (click)="redirectToTickets()"><i class="fas fa-ticket-alt"></i> Buy Tickets</button>

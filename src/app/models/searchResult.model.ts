@@ -2,7 +2,7 @@ export class SearchResult {
     private id: number;
     private artist: string;
     private imageURL: string;
-    private datetime: Date;
+    private datetime: string;
     private url: string;
     private venueName: string;
     private venueGlobalLocation: string;
@@ -12,15 +12,11 @@ export class SearchResult {
         this.id = id;
         this.artist = artist;
         this.imageURL = imageURL;
-        this.datetime = new Date(datetime);
+        this.datetime = datetime;
         this.url = url;
         this.venueName = venueName;
         this.venueGlobalLocation = venueGlobalLocation;
         this.ticketUrl = ticketUrl;
-    }
-
-    getID() {
-        return this.id;
     }
 
     getArtist() {
@@ -28,10 +24,14 @@ export class SearchResult {
     }
 
     getDatetime() {
-        return this.datetime;
+        return new Date(this.datetime);
     }
 
     getUrl() {
         return this.url;
+    }
+
+    getID() {
+        return this.id;
     }
 }

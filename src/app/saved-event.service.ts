@@ -5,14 +5,7 @@ import { Injectable } from "@angular/core";
 
 @Injectable()
 export class SavedEventService {
-    savedEvents: SearchResult[] = [
-        new SearchResult(1, 'The Black Keys', 
-                         'https://bit.ly/2GJfbH6', 
-                         'Tue May 29 2018 20:00:00 GMT-0400 (US Eastern Daylight Time)', 
-                         'https://www.bandsintown.com/e/21206697?app_id=50&came_from=267', 
-                         'The Slippery Noodle', 'Indianapolis, IN, United States', 
-                          null),
-    ];
+    savedEvents: SearchResult[] = [];
     modifiedEvents: Subject<SearchResult[]>;
 
     constructor(private http: Http) {
@@ -23,8 +16,12 @@ export class SavedEventService {
     refreshSavedEvents() {
         this.http.get('https://music-map-db.firebaseio.com/savedEvents.json').subscribe(
             (response: Response) => {
-                let refreshedSavedEvents: SearchResult[] = response.json();
-                this.savedEvents = refreshedSavedEvents;
+                let refreshedSavedEvents = response.json();
+                this.savedEvents = [];
+                for (let eventObj of refreshedSavedEvents) {
+                    console.log(eventObj);
+                    this.savedEvents.push(new SearchResult(eventObj.id, eventObj.artist, eventObj.imageURL, eventObj.datetime, eventObj.url, eventObj.venueName, eventObj.venueGlobalLocation, eventObj.ticketUrl));
+                }
                 this.modifiedEvents.next(this.savedEvents.slice());
             }
         )
@@ -33,7 +30,7 @@ export class SavedEventService {
     saveEvents() {
         this.http.put('https://music-map-db.firebaseio.com/savedEvents.json', this.savedEvents).subscribe(
             (response: Response) => {
-                console.log(response);  
+                console.log(response);
             });
     }
 
@@ -44,13 +41,14 @@ export class SavedEventService {
     }
 
     removeFromSavedEvents(id: number) {
-        this.savedEvents.forEach((event) => {
+        for (let event of this.savedEvents) {
             if (event.getID() === id) {
                 this.savedEvents.splice(this.savedEvents.indexOf(event), 1);
             }
-        });
+        }
         this.sortByDate();
         this.modifiedEvents.next(this.savedEvents.slice());
+        this.saveEvents();
     }
 
     has(id: number) {
