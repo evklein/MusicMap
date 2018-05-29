@@ -12,6 +12,7 @@ import { SavedEventComponent } from './saved-events/saved-event/saved-event.comp
 import { SavedEventService } from './saved-event.service';
 import { EventPageComponent } from './event-page/event-page.component';
 import { HttpModule } from '@angular/http';
+import { LyricsPageComponent } from './lyrics-page/lyrics-page.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HttpModule } from '@angular/http';
     SearchResultsComponent,
     SavedEventsComponent,
     SavedEventComponent,
-    EventPageComponent
+    EventPageComponent,
+    LyricsPageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,13 @@
+<div class="container">
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <div class="input-group" >
+        <label for="artist">Artist</label>
+        <input type="text" class="form-control" name="artist" ngModel>
+        <br>
+        <label for="song">Song</label>
+        <input type="text" class="form-control" name="song" ngModel>
+        <br>
+        <button class="btn btn-primary" type="submit">Search Lyrics</button>
+    </div>
+  </form>
+</div>
