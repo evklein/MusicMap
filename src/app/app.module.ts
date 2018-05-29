@@ -13,6 +13,8 @@ import { SavedEventService } from './saved-event.service';
 import { EventPageComponent } from './event-page/event-page.component';
 import { HttpModule } from '@angular/http';
 import { LyricsPageComponent } from './lyrics-page/lyrics-page.component';
+import { LyricsSearchService } from './lyrics-page/lyrics-search.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,8 +32,9 @@ import { LyricsPageComponent } from './lyrics-page/lyrics-page.component';
     FormsModule,
     AppRoutingModule,
     HttpModule,
+    HttpClientModule
   ],
-  providers: [SearchService, SavedEventService],
+  providers: [SearchService, SavedEventService, LyricsSearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
